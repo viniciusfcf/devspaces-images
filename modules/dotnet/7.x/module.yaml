@@ -1,0 +1,12 @@
+schema_version: 1
+name: dotnet-7
+version: v1.0
+description: "Installs .NET 7.0"
+packages:
+  manager_flags: "--disableplugin=subscription-manager --setopt=tsflags=nodocs --setopt=install_weak_deps=0"
+  install:
+  - dotnet-hostfxr-8.0
+  - dotnet-runtime-7.0
+  - dotnet-runtime-8.0
+  - dotnet-sdk-7.0
+  - dotnet-sdk-8.0
