@@ -11,7 +11,8 @@ modules:
   repositories:
   - path: "../modules"
   install:
-  - name: python3.11
+  - name: python3.10
   - name: aws-cli
   - name: ansible
   - name: azure-cli
+  - name: ibmcloud-cli
