@@ -2,7 +2,7 @@
 
 schema_version: 1
 
-from: "registry.access.redhat.com/ubi9/python-311:1"
+from: "registry.access.redhat.com/ubi9/python-39"
 name: &name "devspaces-sre"
 version: &version "1.0"
 description: "Container image for Red Hat OpenShift Dev Spaces tailored with SRE-focused tools"
@@ -11,7 +11,7 @@ modules:
   repositories:
   - path: "../modules"
   install:
-  - name: python3.10
+  - name: python3
   - name: aws-cli
   - name: ansible
   - name: azure-cli
