@@ -13,3 +13,5 @@ modules:
   install:
   - name: python3.11
   - name: aws-cli
+  - name: ansible
+  - name: azure-cli
