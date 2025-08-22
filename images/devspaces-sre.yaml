@@ -1,0 +1,15 @@
+# This is an image descriptor for CEkit
+
+schema_version: 1
+
+from: "registry.access.redhat.com/ubi9/python-311:1"
+name: &name "devspaces-sre"
+version: &version "1.0"
+description: "Container image for Red Hat OpenShift Dev Spaces tailored with SRE-focused tools"
+
+modules:
+  repositories:
+  - path: "../modules"
+  install:
+  - name: python3.11
+  - name: aws-cli
