@@ -2,7 +2,7 @@
 
 schema_version: 1
 
-from: "registry.access.redhat.com/ubi9/python-39"
+from: "registry.access.redhat.com/ubi9/python-312"
 name: &name "devspaces-sre"
 version: &version "1.0"
 description: "Container image for Red Hat OpenShift Dev Spaces tailored with SRE-focused tools"
