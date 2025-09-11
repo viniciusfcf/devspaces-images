@@ -1,0 +1,36 @@
+FROM quay.io/devfile/universal-developer-image:ubi9-9cc669d
+
+# Install Python 3.12 and dependencies
+USER root
+RUN dnf install -y \
+        python3.12 \
+        python3.12-pip \
+        gcc \
+        make \
+        git \
+        curl \
+        unzip \
+    && alternatives --install /usr/bin/python3 python3 /usr/bin/python3.12 2 \
+    && alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip3.12 2 \
+    && python3 -m pip install --upgrade pip setuptools wheel \
+    && dnf clean all
+
+# Install CLIs via pip
+RUN pip3 install \
+        azure-cli \
+        ansible \
+        awscli
+
+# Install IBM Cloud CLI (official script)
+RUN curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+
+# Ensure binaries are in PATH
+ENV PATH=/home/user/.local/bin:/usr/local/bin:$PATH
+
+# Fix permissions for OpenShift random UID execution
+RUN mkdir -p /home/user && \
+    chown -R 0:0 /home/user && \
+    chmod -R g+rwX /home/user /usr/local/bin
+
+# Drop root, allow OpenShift to inject a random UID
+USER 1001
