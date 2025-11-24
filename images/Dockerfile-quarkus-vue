@@ -1,7 +1,12 @@
 FROM quay.io/devfile/base-developer-image:ubi10-f1cf6ea
 
+# DOCKERFILE FROM USING UBI9
+# https://github.com/devfile/developer-images/blob/main/universal/ubi9/Dockerfile
 
 USER root
+
+# We install everything to /home/tooling/ as /home/user/ may get overriden, see github.com/eclipse/che/issues/22412
+ENV HOME=/home/tooling
 
 # Java
 RUN curl -fsSL "https://get.sdkman.io/?rcupdate=false" | bash \
