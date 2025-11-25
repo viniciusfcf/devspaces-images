@@ -5,6 +5,12 @@ FROM quay.io/devfile/base-developer-image:ubi10-f1cf6ea
 
 USER root
 
+
+# $PROFILE_EXT contains all additions made to the bash environment
+ENV PROFILE_EXT=/etc/profile.d/udi_environment.sh
+RUN touch ${PROFILE_EXT} && chown 10001 ${PROFILE_EXT}
+
+
 # We install everything to /home/tooling/ as /home/user/ may get overriden, see github.com/eclipse/che/issues/22412
 ENV HOME=/home/tooling
 
@@ -87,4 +93,4 @@ RUN mkdir -p /home/user && \
     chmod -R g+rwX /home/user /usr/local/bin
 
 # Drop root, allow OpenShift to inject a random UID
-USER 1001
+USER 10001
